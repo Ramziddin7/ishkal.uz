@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CountryNameIdResource;
 use App\Http\Resources\CountryRelationResource;
 use Exception;
 use App\Http\Resources\CountryResource;
@@ -347,7 +348,7 @@ class CountryController extends Controller
 
     public function countryObject()
     {
-        return response()->json(Country::all('id','name')->all(),200);
+        return  response()->json(Country::select('id','name')->get(),200);
     }
 
     
