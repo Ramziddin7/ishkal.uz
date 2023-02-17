@@ -312,9 +312,42 @@ class CountryController extends Controller
     {
         $findedCoun = Country::find($country);
         if($findedCoun){
-            return response(new CountryRelationResource($findedCoun),200);
+            return response()->json(new CountryRelationResource($findedCoun),200);
         }
         return response()->json($this->dataError,404);
+    }
+
+
+    /**
+     * * * * * *  * * * *  * * * * * *
+     * @OA\Get(
+     * path="/v1/option/country",
+     * summary="Return only name and id for select option menu",
+     * description="Return only name and id",
+     * tags={"Country"},
+     *       @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *           @OA\MediaType(
+     *             mediaType="application/json",
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     * )
+     * 
+     */
+
+
+    public function countryObject()
+    {
+        return response()->json(Country::all('id','name')->all(),200);
     }
 
     

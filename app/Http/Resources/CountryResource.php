@@ -14,10 +14,11 @@ class CountryResource extends JsonResource
      */
     public function toArray($request)
     {
-        return {
-            [
-                
-            ]
-        };
+        return [
+            'id'=>$this->id,
+            'mame'=>$this->name,
+            'image'=> asset($this->image),
+            'created_at'=>$this->created_at,
+        ];
     }
 }

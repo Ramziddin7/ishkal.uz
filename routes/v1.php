@@ -9,6 +9,7 @@ Route::post('register',[\App\Http\Controllers\API\v1\AuthController::class,'regi
 Route::post('login',[\App\Http\Controllers\API\v1\AuthController::class,'login']);
 
 Route::get('countries/{country}/university',[App\Http\Controllers\API\v1\CountryController::class,'university']);
+Route::get('option/country',[App\Http\Controllers\API\v1\CountryController::class,'countryObject']);
 Route::resource('country',CountryController::class);
 
 

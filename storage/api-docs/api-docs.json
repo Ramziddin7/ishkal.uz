@@ -409,6 +409,24 @@
                 }
             }
         },
+        "/v1/option/country": {
+            "get": {
+                "tags": [
+                    "Country"
+                ],
+                "summary": "Return only name and id for select option menu",
+                "description": "Return only name and id",
+                "operationId": "5e8dff65a1123f9a49171800e2af37c8",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
         "/v1/field": {
             "get": {
                 "tags": [
@@ -687,8 +705,8 @@
                                     },
                                     "image": {
                                         "type": "text",
-                                        "format": "png,jpg,jpeg,gif",
-                                        "example": "image"
+                                        "format": "binary",
+                                        "example": ""
                                     },
                                     "country_id": {
                                         "type": "number",
