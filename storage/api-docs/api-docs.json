@@ -1,0 +1,891 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "World UZ",
+        "description": "Documentation for World Uz Company",
+        "contact": {
+            "email": "rustamovramziddin7@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/v1/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Log in user ",
+                "description": "Login by email, password !",
+                "operationId": "3baa3b145384161275c3581002c9225f",
+                "requestBody": {
+                    "description": "Pass Balance history  credentials",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "email",
+                                        "format": "string",
+                                        "example": "user@gmail.com"
+                                    },
+                                    "password": {
+                                        "type": "text",
+                                        "format": "string",
+                                        "example": "1234567890AA"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/v1/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Register ",
+                "description": "Register user !",
+                "operationId": "9f2c210e9e11a13335b03c7e02a95215",
+                "requestBody": {
+                    "description": "Pass User history  credentials",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password",
+                                    "password_confirmation",
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "text",
+                                        "format": "string",
+                                        "example": "Jon Doe"
+                                    },
+                                    "email": {
+                                        "type": "email",
+                                        "format": "string",
+                                        "example": "user@gmail.com"
+                                    },
+                                    "password": {
+                                        "type": "text",
+                                        "format": "string",
+                                        "example": "1234567890AA"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "password",
+                                        "format": "string",
+                                        "example": "1234567890AA"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/v1/logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Logout ",
+                "description": "logout user !",
+                "operationId": "0c6d22e05b701dd1f04b4421293a432f",
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "api": []
+                    }
+                ]
+            }
+        },
+        "/v1/country": {
+            "get": {
+                "tags": [
+                    "Country"
+                ],
+                "summary": "Return only name and image for the  first page to avoid large date",
+                "description": "Return only name and image for the  first page",
+                "operationId": "fc919d08df191af41faa4e06106a61c3",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Country"
+                ],
+                "summary": "Post a new data",
+                "description": "Post new coutry  data",
+                "operationId": "9268288b99685cf1f05fdcfa283939db",
+                "requestBody": {
+                    "description": "Pass Country   credentials",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "image"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "text",
+                                        "format": "text",
+                                        "example": "AQSH"
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "format": "binary",
+                                        "example": "image"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/v1/country/{country}": {
+            "get": {
+                "tags": [
+                    "Country"
+                ],
+                "summary": "Get one ",
+                "description": "Return all date related to ID{country id}",
+                "operationId": "981c7edc221587967b9b433fbdc522d6",
+                "parameters": [
+                    {
+                        "name": "country",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Country"
+                ],
+                "summary": "Get one and Delete related to country id",
+                "description": "Return  date related to ID of the country",
+                "operationId": "15454d9e8580ce23a03ce453ff024ad5",
+                "parameters": [
+                    {
+                        "name": "country",
+                        "in": "path",
+                        "description": "put country id and try to delete ",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/v1/countries/{country}/university": {
+            "get": {
+                "tags": [
+                    "Country"
+                ],
+                "summary": "Get one with relation table universities , put country id and get universities ",
+                "description": "Return all date related to ID{country id}",
+                "operationId": "3ae321ed959e339072ad6247e51ef400",
+                "parameters": [
+                    {
+                        "name": "country",
+                        "in": "path",
+                        "description": "ID of the country",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/v1/field": {
+            "get": {
+                "tags": [
+                    "Field"
+                ],
+                "summary": "Return only fields ",
+                "description": "Get all data",
+                "operationId": "9c6e7ee64d1737d64e61a9b2115f9dd1",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Field"
+                ],
+                "summary": "Post a new data",
+                "description": "Post new University  data",
+                "operationId": "b388943d11eb5ffe9e390c1959230bd8",
+                "requestBody": {
+                    "description": "Pass Country   credentials",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "university_id",
+                                    "country_id",
+                                    "name",
+                                    "category",
+                                    "price",
+                                    "duration",
+                                    "description"
+                                ],
+                                "properties": {
+                                    "university_id": {
+                                        "type": "number",
+                                        "format": "int",
+                                        "example": "1"
+                                    },
+                                    "country_id": {
+                                        "type": "number",
+                                        "format": "int",
+                                        "example": "2"
+                                    },
+                                    "name": {
+                                        "type": "text",
+                                        "format": "text",
+                                        "example": "Computer science"
+                                    },
+                                    "category": {
+                                        "type": "text",
+                                        "format": "text",
+                                        "example": "Master"
+                                    },
+                                    "price": {
+                                        "type": "text",
+                                        "format": "string",
+                                        "example": "$2000"
+                                    },
+                                    "duration": {
+                                        "type": "text",
+                                        "format": "string",
+                                        "example": "12 monthy"
+                                    },
+                                    "description": {
+                                        "type": "text",
+                                        "format": "text",
+                                        "example": "something"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/v1/field/{field}": {
+            "get": {
+                "tags": [
+                    "Field"
+                ],
+                "summary": "Get one ",
+                "description": "Return all date related to ID{field id}",
+                "operationId": "dd3dd9aa6f363b474f205aec28f1ddb0",
+                "parameters": [
+                    {
+                        "name": "field",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Field"
+                ],
+                "summary": "Get one and Delete related to field id",
+                "description": "Return  date related to ID of the field",
+                "operationId": "d167794c520092daa1ee47f1d5ea8048",
+                "parameters": [
+                    {
+                        "name": "field",
+                        "in": "path",
+                        "description": "put field id and try to delete ",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/v1/fields/{field}/field": {
+            "get": {
+                "tags": [
+                    "Field"
+                ],
+                "summary": "Get one with all the relation data ",
+                "description": "Return all date related to ID{field id}",
+                "operationId": "2af48e09e37a71f75dc3f9af85b7945d",
+                "parameters": [
+                    {
+                        "name": "field",
+                        "in": "path",
+                        "description": "ID of the field ",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/v1/university": {
+            "get": {
+                "tags": [
+                    "University"
+                ],
+                "summary": "Return only name and image for the  first page to avoid large date",
+                "description": "Return only name and image for the  first page",
+                "operationId": "8d0b812cbb321a3715292f228fa0c3bc",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "University"
+                ],
+                "summary": "Post a new data",
+                "description": "Post new University  data",
+                "operationId": "5fdf71fc5b125ed93041585e04f04894",
+                "requestBody": {
+                    "description": "Pass Country   credentials",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "image",
+                                    "country_id",
+                                    "categories",
+                                    "contact_file",
+                                    "min_price",
+                                    "min_ielts",
+                                    "city_name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "text",
+                                        "format": "text",
+                                        "example": "AQSH"
+                                    },
+                                    "image": {
+                                        "type": "text",
+                                        "format": "png,jpg,jpeg,gif",
+                                        "example": "image"
+                                    },
+                                    "country_id": {
+                                        "type": "number",
+                                        "format": "number",
+                                        "example": "3"
+                                    },
+                                    "categories": {
+                                        "type": "text",
+                                        "format": "text",
+                                        "example": "Master"
+                                    },
+                                    "contact_file": {
+                                        "type": "file",
+                                        "format": "file",
+                                        "example": "file.jpeg"
+                                    },
+                                    "min_price": {
+                                        "type": "text",
+                                        "format": "string",
+                                        "example": "$2000"
+                                    },
+                                    "min_ielts": {
+                                        "type": "text",
+                                        "format": "text",
+                                        "example": "5.5"
+                                    },
+                                    "city_name": {
+                                        "type": "text",
+                                        "format": "text",
+                                        "example": "New York"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/v1/university/{university}": {
+            "get": {
+                "tags": [
+                    "University"
+                ],
+                "summary": "Get one with field relation data !",
+                "description": "Return all date related to ID{university id}",
+                "operationId": "69a3f61f1ae67a8dcea68a95a785c410",
+                "parameters": [
+                    {
+                        "name": "university",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "University"
+                ],
+                "summary": "Get one and Delete related to university id",
+                "description": "Return  date related to ID of the university",
+                "operationId": "d1260271fb71e10069dc3282281342b2",
+                "parameters": [
+                    {
+                        "name": "university",
+                        "in": "path",
+                        "description": "put university id and try to delete ",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/v1/universities/{university}/field": {
+            "get": {
+                "tags": [
+                    "University"
+                ],
+                "summary": "Get one return with relation data from database like fields all the field come here ! ",
+                "description": "Return all date related to ID{university id}",
+                "operationId": "951be325b620bba43ac1a4b2d34f8a1d",
+                "parameters": [
+                    {
+                        "name": "university",
+                        "in": "path",
+                        "description": "University id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "api": {
+                "type": "http",
+                "description": "Login with email and password to get the authentication token",
+                "name": "Token based Based",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
