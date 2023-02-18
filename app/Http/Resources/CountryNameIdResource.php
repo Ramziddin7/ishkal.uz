@@ -16,8 +16,8 @@ class CountryNameIdResource extends JsonResource
     {
          $options =  [
             [
-                'id'=>$this->id,
-                'name'=>$this->name
+                'value'=>$this->id,
+                'lable'=>$this->name
             ]
         ];
         return $options;
