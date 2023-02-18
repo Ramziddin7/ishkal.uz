@@ -21,7 +21,8 @@ class FieldResource extends JsonResource
             'price'=>$this->price,
             'duration'=>$this->duration,
             'description'=>$this->description,
-            'created'=>$this->created_at,
+            'created_at'=>$this->created_at->diffForHumans(),
+            'updated_at'=>$this->updated_at->diffForHumans(),
         ];
     }
 }

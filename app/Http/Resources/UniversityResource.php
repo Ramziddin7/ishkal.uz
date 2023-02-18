@@ -23,7 +23,8 @@ class UniversityResource extends JsonResource
             'min_ielts'=>$this->min_ielts,
             'city_name'=>$this->city_name,
             'image'=>asset($this->image),
-            'created'=>$this->created_at
+            'created_at'=>$this->created_at->diffForHumans(),
+            'updated_at'=>$this->updated_at->diffForHumans(),
         ];
     }
 }
