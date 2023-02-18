@@ -15,10 +15,9 @@ class CountryNameIdResource extends JsonResource
     public function toArray($request)
     {
          $options =  [
-            [
+            
                 'value'=>$this->id,
                 'lable'=>$this->name
-            ]
         ];
         return $options;
     }

@@ -348,7 +348,8 @@ class CountryController extends Controller
 
     public function countryObject()
     {
-        return  response()->json(Country::select('id','name')->get(),200);
+       $a =   Country::select('id','name')->get();
+       return response()->json(CountryNameIdResource::collection($a),200);
     }
 
     
