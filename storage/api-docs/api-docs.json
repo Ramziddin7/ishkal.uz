@@ -692,7 +692,7 @@
                                     "image",
                                     "country_id",
                                     "categories",
-                                    "contact_file",
+                                    "contractFile",
                                     "min_price",
                                     "min_ielts",
                                     "city_name"
@@ -704,9 +704,8 @@
                                         "example": "AQSH"
                                     },
                                     "image": {
-                                        "type": "text",
-                                        "format": "binary",
-                                        "example": ""
+                                        "type": "string",
+                                        "format": "binary"
                                     },
                                     "country_id": {
                                         "type": "number",
@@ -718,10 +717,10 @@
                                         "format": "text",
                                         "example": "Master"
                                     },
-                                    "contact_file": {
-                                        "type": "file",
-                                        "format": "file",
-                                        "example": "file.jpeg"
+                                    "contractFile": {
+                                        "type": "string",
+                                        "format": "binary",
+                                        "example": ""
                                     },
                                     "min_price": {
                                         "type": "text",

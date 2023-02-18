@@ -17,7 +17,7 @@ class UniversityFactory extends Factory
         return [
             'country_id'=> Country::all()->random()->id,
             'categories'=>$this->faker->randomElement(['Bachelor','master','PpD']),
-            'contract_file'=>$this->faker->paragraph(),
+            'contractFile'=>$this->faker->paragraph(),
             'name'=>$this->faker->name(),
             'min_price'=>$this->faker->randomNumber(),
             'min_ielts'=>$this->faker->numberBetween(1,9),

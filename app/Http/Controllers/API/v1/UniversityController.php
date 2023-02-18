@@ -7,6 +7,8 @@ use App\Http\Resources\UniversityResource;
 use App\Models\University;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class UniversityController extends Controller
 {
@@ -86,12 +88,12 @@ class UniversityController extends Controller
      *       mediaType="multipart/form-data",
      *       @OA\Schema(
      *       type="object",
-     *       required={"name","image","country_id","categories","contact_file","min_price","min_ielts","city_name"},
+     *       required={"name","image","country_id","categories","contractFile","min_price","min_ielts","city_name"},
      *       @OA\Property(property="name", type="text", format="text", example="AQSH"),
-     *       @OA\Property(property="image", type="text", format="binary", example=""),
+     *       @OA\Property(property="image", type="string", format="binary"),
      *       @OA\Property(property="country_id", type="number", format="number", example="3"),
      *       @OA\Property(property="categories", type="text", format="text", example="Master"),
-     *       @OA\Property(property="contact_file", type="file", format="file", example="file.jpeg"),
+     *       @OA\Property(property="contractFile", type="string", format="binary", example=""),
      *       @OA\Property(property="min_price", type="text", format="string", example="$2000"),
      *       @OA\Property(property="min_ielts", type="text", format="text", example="5.5"),
      *       @OA\Property(property="city_name", type="text", format="text", example="New York"),
@@ -137,7 +139,7 @@ class UniversityController extends Controller
         $request->validate([
             'country_id'=>['required','exists:countries,id'],
             'categories'=>['required'],
-            'contact_file'=>['required'],
+            'contractFile'=>['required','mimes:pdf,xlxs,xlx,docx,doc,csv,txt|max:4096'],
             'name'=>['required'],
             'min_price'=>['required'],
             'min_ielts'=>['required'],
@@ -145,23 +147,31 @@ class UniversityController extends Controller
             'image'=>['required','mimes:jpeg,png,jpg'] 
         ]);
 
+        // return  $fileName = $request->contractFile->getClientOriginalName();;
+
         if($request->file('image')){
             $getImage = $request->file('image');
             $imageName = $getImage->getClientOriginalName();
             $imageFullName = time().''. $imageName;
             $imageFullName = str_replace([' '],[''],$imageFullName);
-            $path = $getImage->move(('images'),$imageFullName);
+            $imagePath = $getImage->move(('images'),$imageFullName);
         }
+            $fileGet = $request->file('contractFile');
+            $fileName = $request->contractFile->getClientOriginalName();
+            $fileFullName = time().''. $fileName;
+            $fileName = str_replace([' '],[''],$fileFullName);
+            $filePath = $fileGet->move(('uploads'),$fileName);
+    
 
         $univer = new University();
         $univer->country_id = $request->country_id;
         $univer->categories = $request->categories;
-        $univer->contact_file = $request->contact_file;
+        $univer->image = $imagePath;
+        $univer->contractFile = $filePath;
         $univer->name = $request->name;
         $univer->min_price = $request->min_price;
         $univer->min_ielts = $request->min_ielts;
         $univer->city_name = $request->city_name;
-        $univer->image = $path ?? 'no image';
         $univer->save();
         return response()->json(new UniversityResource($univer),200);
     }
