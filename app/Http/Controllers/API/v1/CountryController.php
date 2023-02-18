@@ -345,12 +345,10 @@ class CountryController extends Controller
      * 
      */
 
-
     public function countryObject()
     {
        $a =   Country::select('id','name')->get();
        return response()->json(CountryNameIdResource::collection($a),200);
     }
-
     
 }
