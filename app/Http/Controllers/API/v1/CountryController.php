@@ -133,7 +133,7 @@ class CountryController extends Controller
     {
         $request->validate([
             'name'=>['required'],
-            'image'=>['required'],
+            'image'=>['required','mimes:jpeg,png,jpg'],
         ]);
 
         if($request->file('image')){
