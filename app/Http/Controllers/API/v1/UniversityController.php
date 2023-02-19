@@ -137,12 +137,9 @@ class UniversityController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'country_id'=>['required','exists:countries,id'],
-            'categories'=>['required'],
             'contractFile'=>['required','mimes:pdf,xlxs,xlx,docx,doc,csv,txt|max:4096'],
             'name'=>['required'],
             'min_price'=>['required'],
-            'min_ielts'=>['required'],
             'city_name'=>['required'],
             'image'=>['required','mimes:jpeg,png,jpg'],
         ]);
