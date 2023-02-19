@@ -70,7 +70,7 @@ class UniversityController extends Controller
 
             $univer = new University();
             $univer->country_id = $request->country_id;
-            $univer->categories = $request->categories;
+            $univer->categories = json_encode($request->categories);
             $univer->image = $imagePath;
             $univer->contractFile = $filePath;
             $univer->name = $request->name;

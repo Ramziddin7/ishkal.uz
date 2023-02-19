@@ -17,7 +17,7 @@ class CreateUniversitiesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('country_id');
             $table->foreign('country_id')->references('id')->on('countries');
-            $table->string('categories');
+            $table->json('categories');
             $table->string('contractFile');
             $table->string('name');
             $table->string('min_price');
