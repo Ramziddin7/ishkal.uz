@@ -165,7 +165,6 @@ class UniversityController extends Controller
 
         $univer = new University();
         $univer->country_id = $request->country_id->value;
-
         $univer->categories = $request->categories->label;
         $univer->image = $imagePath;
         $univer->contractFile = $filePath;
