@@ -98,7 +98,7 @@ class CountryController extends Controller
      */
     public function update(Request $request,$country)
     {
-        // dd($request->all());
+        
         $country = Country::find($country);
         if($country){
             if($request->file('image')){
@@ -125,7 +125,6 @@ class CountryController extends Controller
     public function destroy($country)
     {
 
-        // dd($country);
         try{
             $country = Country::find($country);
             if($country){

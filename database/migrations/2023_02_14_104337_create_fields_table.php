@@ -17,8 +17,6 @@ class CreateFieldsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('university_id');
             $table->foreign('university_id')->references('id')->on('universities');
-            $table->unsignedBigInteger('country_id');
-            $table->foreign('country_id')->references('id')->on('countries');
             $table->string('name');
             $table->string('category');
             $table->string('price');

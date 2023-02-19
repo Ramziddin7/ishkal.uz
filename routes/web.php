@@ -50,21 +50,21 @@ Route::delete('field/delete/{id}', [FieldController::class,'destroy'])->name('fi
 
 //  auth
 
-Route::get('dashboard', [AuthWebController::class, 'dashboard']); 
-Route::get('login', [AuthWebController::class, 'index'])->name('login');
-Route::post('custom-login', [AuthWebController::class, 'customLogin'])->name('login.custom'); 
-Route::get('registration', [AuthWebController::class, 'registration'])->name('register-user');
-Route::post('custom-registration', [AuthWebController::class, 'customRegistration'])->name('register.custom'); 
-Route::get('signout', [AuthWebController::class, 'signOut'])->name('signout');
+// Route::get('dashboard', [AuthWebController::class, 'dashboard']); 
+// Route::get('login', [AuthWebController::class, 'index'])->name('login');
+// Route::post('custom-login', [AuthWebController::class, 'customLogin'])->name('login.custom'); 
+// Route::get('registration', [AuthWebController::class, 'registration'])->name('register-user');
+// Route::post('custom-registration', [AuthWebController::class, 'customRegistration'])->name('register.custom'); 
+// Route::get('signout', [AuthWebController::class, 'signOut'])->name('signout');
 
 
 
 
-Route::middleware('guest')->group(function () {
-    Route::get('login',[\App\Http\Controllers\AuthWebController::class,'index']);
-    Route::post('login',[\App\Http\Controllers\AuthWebController::class,'login']);
-});
-Route::middleware('auth')->group(function () {
-    Route::post('register',[\App\Http\Controllers\AuthWebController::class,'register']);
-    Route::post('logout',[\App\Http\Controllers\AuthWebController::class,'logout']);
-});
+// Route::middleware('guest')->group(function () {
+//     Route::get('login',[\App\Http\Controllers\AuthWebController::class,'index']);
+//     Route::post('login',[\App\Http\Controllers\AuthWebController::class,'login']);
+// });
+// Route::middleware('auth')->group(function () {
+//     Route::post('register',[\App\Http\Controllers\AuthWebController::class,'register']);
+//     Route::post('logout',[\App\Http\Controllers\AuthWebController::class,'logout']);
+// });

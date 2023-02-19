@@ -2,6 +2,16 @@
 
 @section('content')
 <div class="container">
+        @if (session('errors'))
+        <div class="col-sm-12">
+            <div class="alert  alert-danger alert-dismissible fade show" role="alert">
+                {{ session('errors') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+        </div>
+      @endif
       @if (session('success'))
         <div class="col-sm-12">
             <div class="alert  alert-success alert-dismissible fade show" role="alert">
@@ -19,7 +29,6 @@
                 <thead>
                   <tr>
                     <th scope="col">N</th>
-                    <th scope="col">Country</th>
                     <th scope="col">University</th>
                     <th scope="col">Field Name</th>
                     <th scope="col">Category(rate)</th>
@@ -37,9 +46,6 @@
                       <th scope="row">
                         {{$loop->index+1}}
                       </th>
-                      <td>
-                        {{$field->country->name}}
-                      </td>
                       <td>
                         {{$field->university->name}}
                       </td>
@@ -60,7 +66,7 @@
                         {{$field->description}}
                       </td>
                       <td>
-                        <a class="btn btn-dark" href="{{route('university.web.edit',['id'=>$field->id])}}">Edit</a>
+                        <a class="btn btn-dark" href="{{route('field.web.edit',['id'=>$field->id])}}">Edit</a>
                       </td>
                       <td>
                         <form action="{{route('field.web.delete',['id'=>$field->id])}}" method="POST">

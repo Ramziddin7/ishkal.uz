@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Country;
 use App\Models\University;
 use Illuminate\Http\Request;
+use Exception;
+use Illuminate\Support\Facades\File;
+
 
 class UniversityController extends Controller
 {
@@ -98,9 +101,17 @@ class UniversityController extends Controller
      * @param  \App\Models\University  $university
      * @return \Illuminate\Http\Response
      */
-    public function edit(University $university)
+    public function edit($university)
     {
-        //
+        $university = University::find($university);
+        $country = Country::all();
+        if($university){
+         return view('university.update',[
+             'university'=>$university,
+             'country'=>$country,
+         ]);
+        }
+        return redirect()->route('university.web.index')->with('errors', 'Not found');
     }
 
     /**
@@ -110,9 +121,37 @@ class UniversityController extends Controller
      * @param  \App\Models\University  $university
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, University $university)
+    public function update(Request $request,  $university)
     {
-        //
+        $university = University::find($university);
+        if($university){
+            if($request->file('image')){
+                $getImage = $request->file('image');
+                $imageName = $getImage->getClientOriginalName();
+                $imageFullName = time().''. $imageName;
+                $imageFullName = str_replace([' '],[''],$imageFullName);
+                $imagePath = $getImage->move(('images'),$imageFullName);
+            }
+            if($request->file('contractFile')){
+                    $fileGet = $request->file('contractFile');
+                    $fileName = $request->contractFile->getClientOriginalName();
+                    $fileFullName = time().''. $fileName;
+                    $fileName = str_replace([' '],[''],$fileFullName);
+                    $filePath = $fileGet->move(('uploads'),$fileName);
+                
+              }
+            //   dd($university->country_id);
+                $university->country_id = $request->country_id ?? $university->country_id;
+                $university->categories = json_encode($request->categories) ?? $university->categories;
+                $university->image = $imagePath ?? $university->image;
+                $university->contractFile = $filePath ?? $university->contractFile;
+                $university->name = $request->name ?? $university->name;
+                $university->min_price = $request->min_price ?? $university->price;
+                $university->min_ielts = $request->min_ielts ?? $university->ielts;
+                $university->city_name = $request->city_name ?? $university->city_name;
+                $university->save();
+                return redirect()->route('university.web.index')->with('success', 'Updated');
+        }
     }
 
     /**
@@ -121,8 +160,24 @@ class UniversityController extends Controller
      * @param  \App\Models\University  $university
      * @return \Illuminate\Http\Response
      */
-    public function destroy(University $university)
+    public function destroy($university)
     {
-        //
+        try{
+            // dd($university);
+            $university = University::find($university);
+            if($university){
+                $file = File::exists(public_path($university->image));
+                if($file){
+                    File::delete(public_path($university->image));
+                    $university->delete();
+                    return redirect()->route('university.web.index')->with('success', ' Deleted');
+                }
+                $university->delete();
+                return redirect()->route('university.web.index')->with('success', ' Deleted');
+            }
+            return redirect()->route('university.web.index')->with('errors', 'Not found');
+        }catch(Exception $e){
+        return redirect()->route('university.web.index')->with('errors', 'Can not be deleted becouse it is connected to field');
+       }
     }
 }

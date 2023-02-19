@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
       @if ($errors->any())
@@ -27,21 +26,46 @@
       @endif
     <div class="row justify-content-center">
         <div class="col-md-12 py-5">
-            <form action="{{route('country.web.update',['id'=>$country->id])}}" method="POST" enctype="multipart/form-data">    
+            <form action="{{route('field.web.update',['id'=>$field->id])}}" method="POST" enctype="multipart/form-data">
               @csrf
               @method('PUT')
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Country Name</label>
-                  <input type="text" name="name" class="form-control" value="{{$country->name}}" id="exampleInputEmail1" aria-describedby="Country" placeholder="Country name">
-                  <small id="Country" class="form-text text-muted">Please put country name correctly</small>
+                  <label for=" university">Depended UNIVERSITY</label>
+                  <select name="university_id" class="form-control" aria-label="Default select example">
+                    <option selected></option>
+                    @if(count($university))
+                     @foreach($university as $university)
+                     <option value="{{$university->id}}">{{$university->name}}</option>
+                     @endforeach
+                    @else
+                    No  country
+                    @endif
+                  </select>
+                  <small id="Country" class="form-text text-muted">if you dont put any value it will be set previous value </small>
                 </div>
                 <div class="form-group">
-                    <img src="{{asset($country->image)}}" class="img-responsive img-rounded w-100" alt="">
-                  </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Image</label>
-                  <input type="file" name="image" value="{{$country->image}}" class="form-control" id="exampleInputPassword1" placeholder="file">
+                  <label for="university name">Field Name</label>
+                  <input type="text" name="name" value="{{$field->name}}"  class="form-control" id="university name" aria-describedby="" placeholder="university name">
                 </div>
+                <div class="form-group">
+                  <label for="min price">Category (rate)</label>
+                  <input type="text" name="category" value="{{$field->category}}" class="form-control" id="min price " aria-describedby="" placeholder="category(rate)">
+                </div>
+                <div class="form-group">
+                  <label for="min ielts">Price</label>
+                  <input type="text" name="price" value="{{$field->price}}" class="form-control" id="Price" aria-describedby="min ielts" placeholder="Price">
+                </div>
+                <div class="form-group">
+                  <label for="city name">Duration</label>
+                  <input type="text" name="duration" value="{{$field->duration}}" class="form-control" id="city_name" aria-describedby="Country" placeholder="Duration">
+                </div>
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  <textarea type="text" name="description"  class="form-control" id="description" aria-describedby="description">
+                    {{$field->description}}"
+                  </textarea>
+                </div>
+
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
         </div>

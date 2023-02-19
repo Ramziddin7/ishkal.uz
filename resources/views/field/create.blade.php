@@ -31,19 +31,6 @@
               @csrf
               @method('POST')
                 <div class="form-group">
-                  <label for="country">Depended Country</label>
-                  <select name="country_id" class="form-control" aria-label="Default select example">
-                    <option selected>Please select country</option>
-                    @if(count($country))
-                     @foreach($country as $country)
-                     <option value="{{$country->id}}">{{$country->name}}</option>
-                     @endforeach
-                    @else
-                    No  country
-                    @endif
-                  </select>
-                </div>
-                <div class="form-group">
                   <label for=" university">Depended UNIVERSITY</label>
                   <select name="university_id" class="form-control" aria-label="Default select example">
                     <option selected>Please select UNIVERSITY</option>

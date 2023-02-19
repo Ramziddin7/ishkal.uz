@@ -17,7 +17,6 @@ class FieldFactory extends Factory
     {
         return [
             'university_id'=>University::all()->random()->id,
-            'country_id'=>Country::all()->random()->id,
             'name'=>$this->faker->name(),
             'category'=>$this->faker->name(),
             'price'=>$this->faker->numberBetween(1000,20000),
