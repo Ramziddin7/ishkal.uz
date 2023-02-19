@@ -164,9 +164,9 @@ class UniversityController extends Controller
     
 
         $univer = new University();
-        $univer->country_id =  'a';//$request->country_id[0]['value'] ?? 'a';
-        $univer->categories = 'a';//$request->categories['label'] ?? 'a';
-        $univer->min_ielts = 'a';//$request->min_ielts[0]['value'] ?? 'a';
+        $univer->country_id =  '1';//$request->country_id[0]['value'] ?? 'a';
+        $univer->categories = 'master';//$request->categories['label'] ?? 'a';
+        $univer->min_ielts = '5.6';//$request->min_ielts[0]['value'] ?? 'a';
         $univer->image = $imagePath;
         $univer->contractFile = $filePath;
         $univer->name = $request->name;
