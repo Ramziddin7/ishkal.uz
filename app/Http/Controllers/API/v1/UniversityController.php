@@ -144,7 +144,7 @@ class UniversityController extends Controller
             'min_price'=>['required'],
             'min_ielts'=>['required'],
             'city_name'=>['required'],
-            'image'=>['required','mimes:jpeg,png,jpg'] 
+            'image'=>['required','mimes:jpeg,png,jpg'],
         ]);
 
         // return  $fileName = $request->contractFile->getClientOriginalName();;
@@ -164,13 +164,14 @@ class UniversityController extends Controller
     
 
         $univer = new University();
-        $univer->country_id = $request->country_id;
-        $univer->categories = $request->categories;
+        $univer->country_id = $request->country_id->value;
+
+        $univer->categories = $request->categories->label;
         $univer->image = $imagePath;
         $univer->contractFile = $filePath;
         $univer->name = $request->name;
         $univer->min_price = $request->min_price;
-        $univer->min_ielts = $request->min_ielts;
+        $univer->min_ielts = $request->min_ielts->value;
         $univer->city_name = $request->city_name;
         $univer->save();
         return response()->json(new UniversityResource($univer),200);
