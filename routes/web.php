@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthWebController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\FieldController;
 use App\Http\Controllers\UniversityController;
@@ -20,7 +21,6 @@ Route::get('/', function () {
     return view('home');
 });
 
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -48,4 +48,23 @@ Route::get('field/edit/{id}', [FieldController::class,'edit'])->name('field.web.
 Route::put('field/update/{id}', [FieldController::class,'update'])->name('field.web.update');
 Route::delete('field/delete/{id}', [FieldController::class,'destroy'])->name('field.web.delete');
 
+//  auth
 
+Route::get('dashboard', [AuthWebController::class, 'dashboard']); 
+Route::get('login', [AuthWebController::class, 'index'])->name('login');
+Route::post('custom-login', [AuthWebController::class, 'customLogin'])->name('login.custom'); 
+Route::get('registration', [AuthWebController::class, 'registration'])->name('register-user');
+Route::post('custom-registration', [AuthWebController::class, 'customRegistration'])->name('register.custom'); 
+Route::get('signout', [AuthWebController::class, 'signOut'])->name('signout');
+
+
+
+
+Route::middleware('guest')->group(function () {
+    Route::get('login',[\App\Http\Controllers\AuthWebController::class,'index']);
+    Route::post('login',[\App\Http\Controllers\AuthWebController::class,'login']);
+});
+Route::middleware('auth')->group(function () {
+    Route::post('register',[\App\Http\Controllers\AuthWebController::class,'register']);
+    Route::post('logout',[\App\Http\Controllers\AuthWebController::class,'logout']);
+});
