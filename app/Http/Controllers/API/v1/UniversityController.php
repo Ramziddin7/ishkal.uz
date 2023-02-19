@@ -164,13 +164,13 @@ class UniversityController extends Controller
     
 
         $univer = new University();
-        $univer->country_id = $request->country_id[0]['value'];
-        $univer->categories = $request->categories['label'];
+        $univer->country_id =  'a';//$request->country_id[0]['value'] ?? 'a';
+        $univer->categories = 'a';//$request->categories['label'] ?? 'a';
+        $univer->min_ielts = 'a';//$request->min_ielts[0]['value'] ?? 'a';
         $univer->image = $imagePath;
         $univer->contractFile = $filePath;
         $univer->name = $request->name;
         $univer->min_price = $request->min_price;
-        $univer->min_ielts = $request->min_ielts[0]['value'];
         $univer->city_name = $request->city_name;
         $univer->save();
         return response()->json(new UniversityResource($univer),200);
