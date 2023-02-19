@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -48,3 +47,5 @@ Route::post('field/store/create', [FieldController::class,'store'])->name('field
 Route::get('field/edit/{id}', [FieldController::class,'edit'])->name('field.web.edit');
 Route::put('field/update/{id}', [FieldController::class,'update'])->name('field.web.update');
 Route::delete('field/delete/{id}', [FieldController::class,'destroy'])->name('field.web.delete');
+
+
