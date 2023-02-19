@@ -137,9 +137,12 @@ class UniversityController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'country_id'=>['required','exists:countries,id'],
+            'categories'=>['required'],
             'contractFile'=>['required','mimes:pdf,xlxs,xlx,docx,doc,csv,txt|max:4096'],
             'name'=>['required'],
             'min_price'=>['required'],
+            'min_ielts'=>['required'],
             'city_name'=>['required'],
             'image'=>['required','mimes:jpeg,png,jpg'],
         ]);
@@ -161,13 +164,13 @@ class UniversityController extends Controller
     
 
         $univer = new University();
-        $univer->country_id =  '1';//$request->country_id[0]['value'] ?? 'a';
-        $univer->categories = 'master';//$request->categories['label'] ?? 'a';
-        $univer->min_ielts = '5.6';//$request->min_ielts[0]['value'] ?? 'a';
+        $univer->country_id = $request->country_id;
+        $univer->categories = $request->categories;
         $univer->image = $imagePath;
         $univer->contractFile = $filePath;
         $univer->name = $request->name;
         $univer->min_price = $request->min_price;
+        $univer->min_ielts = $request->min_ielts;
         $univer->city_name = $request->city_name;
         $univer->save();
         return response()->json(new UniversityResource($univer),200);
