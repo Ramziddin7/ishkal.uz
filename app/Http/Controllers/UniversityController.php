@@ -6,6 +6,7 @@ use App\Models\Country;
 use App\Models\University;
 use Illuminate\Http\Request;
 use Exception;
+use Facade\FlareClient\Http\Response;
 use Illuminate\Support\Facades\File;
 
 
@@ -180,4 +181,17 @@ class UniversityController extends Controller
         return redirect()->route('university.web.index')->with('errors', 'Can not be deleted becouse it is connected to field');
        }
     }
+
+
+    // public function dowload($id){
+    //     $uni = University::find($id);
+    //     if($uni){
+    //         $file = public_path().$uni->contractFile;
+    //         $headers = [
+    //             'Content-Type : application/pdf'
+    //         ];
+
+    //         return response()->download($$file, 'World uz contract with University', $headers);
+    //     }
+    // }
 }

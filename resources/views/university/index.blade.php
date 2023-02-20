@@ -56,9 +56,7 @@
                         {{$univer->categories}}
                       </td>
                       <td>
-                        <a href="{{asset($univer->contactFile)}}">
-                        file
-                      </a>
+                        <a href="{{$univer->contractFile}}" class="btn btn-priamry">View</a>
                       </td>
                       <td>
                         {{$univer->name}}

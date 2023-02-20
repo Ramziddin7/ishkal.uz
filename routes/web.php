@@ -31,6 +31,7 @@ use Illuminate\Support\Facades\Auth;
 
         // University
         Route::get('university', [UniversityController::class,'index'])->name('university.web.index');
+        // Route::get('dowloadcontract/file/{id}', [UniversityController::class,'download']);
         Route::get('university/create', [UniversityController::class,'create'])->name('university.web.create');
         Route::post('university/store/create', [UniversityController::class,'store'])->name('university.web.store');
         Route::get('university/edit/{id}', [UniversityController::class,'edit'])->name('university.web.edit');
