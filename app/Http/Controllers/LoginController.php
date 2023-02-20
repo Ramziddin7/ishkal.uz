@@ -52,6 +52,6 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user) 
     {
-        return redirect()->route('country.web.index');
+        return redirect()->route('country');
     }
 }
