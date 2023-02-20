@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Auth;
 
         Route::group(['middleware' => ['auth']], function() {
        // country
+        Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
         Route::get('country', [CountryController::class,'index'])->name('country.web.index');
         Route::get('country/create', [CountryController::class,'create'])->name('country.web.create');
         Route::post('country/store/create', [CountryController::class,'store'])->name('country.web.store');

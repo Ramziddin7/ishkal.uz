@@ -31,8 +31,7 @@ class LoginController extends Controller
         $credentials = $request->getCredentials();
 
         if(!Auth::validate($credentials)):
-            return redirect()->to('country')
-                ->withErrors(trans('auth.failed'));
+            return redirect()->to('log');
         endif;
 
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
@@ -52,6 +51,6 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user) 
     {
-        return redirect()->route('country');
+        return redirect()->route('home');
     }
 }
