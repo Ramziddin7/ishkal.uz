@@ -49,7 +49,7 @@ class UniversityController extends Controller
         $request->validate([
             'country_id'=>['required','exists:countries,id'],
             'categories'=>['required'],
-            'contractFile'=>['required','mimes:pdf,xlxs,xlx,docx,doc,csv,txt|max:4096'],
+            'contractFile'=>['required','mimes:pdf,xlxs,xlx,docx,doc,csv,txt|max:8192'],
             'name'=>['required'],
             'min_price'=>['required'],
             'min_ielts'=>['required'],

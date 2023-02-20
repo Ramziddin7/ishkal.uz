@@ -49,7 +49,6 @@ class FieldController extends Controller
     {
         $request->validate([
             'university_id'=>['required','exists:universities,id'],
-            'country_id'=>['required','exists:countries,id'],
             'name'=>['required'],
             'category'=>['required'],
             'price'=>['required'],
@@ -58,7 +57,6 @@ class FieldController extends Controller
         ]);
 
         $field = new Field();
-        $field->country_id = $request->country_id;
         $field->university_id = $request->university_id;
         $field->name = $request->name;
         $field->category = $request->category;
