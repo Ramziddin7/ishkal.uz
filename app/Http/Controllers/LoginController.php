@@ -31,7 +31,7 @@ class LoginController extends Controller
         $credentials = $request->getCredentials();
 
         if(!Auth::validate($credentials)):
-            return redirect()->to('country.web.index')
+            return redirect()->to('country')
                 ->withErrors(trans('auth.failed'));
         endif;
 
