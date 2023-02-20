@@ -17,7 +17,7 @@ class UniversityResource extends JsonResource
         return[
             'id'=>$this->id,
             'categories'=>$this->categories,
-            'contact_file'=>asset($this->contractFile),
+            'contactFile'=>asset($this->contractFile),
             'name'=>$this->name,
             'min_price'=>$this->min_price,
             'min_ielts'=>$this->min_ielts,
