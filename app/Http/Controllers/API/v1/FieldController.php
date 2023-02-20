@@ -90,9 +90,8 @@ class FieldController extends Controller
      *       mediaType="multipart/form-data",
      *       @OA\Schema(
      *       type="object",
-     *       required={"university_id","country_id","name","category","price","duration","description"},
+     *       required={"university_id","name","category","price","duration","description"},
      *       @OA\Property(property="university_id", type="number", format="int", example="1"),
-     *       @OA\Property(property="country_id", type="number", format="int", example="2"),
      *       @OA\Property(property="name", type="text", format="text", example="Computer science"),
      *       @OA\Property(property="category", type="text", format="text", example="Master"),
      *       @OA\Property(property="price", type="text", format="string", example="$2000"),
@@ -139,7 +138,6 @@ class FieldController extends Controller
     {
         $request->validate([
             'university_id'=>['required','exists:universities,id'],
-            'country_id'=>['required','exists:countries,id'],
             'name'=>['required'],
             'category'=>['required'],
             'price'=>['required'],
@@ -148,7 +146,6 @@ class FieldController extends Controller
         ]);
 
         $field = new Field();
-        $field->country_id = $request->country_id;
         $field->university_id = $request->university_id;
         $field->name = $request->name;
         $field->category = $request->category;
