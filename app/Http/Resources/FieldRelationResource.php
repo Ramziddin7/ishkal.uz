@@ -23,7 +23,7 @@ class FieldRelationResource extends JsonResource
             'description'=>$this->description,
             'created_at'=>$this->created_at->diffForHumans(),
             'updated_at'=>$this->updated_at->diffForHumans(),
-            'university'=>UniversityResource::collection($this->university),
+            'university'=> new UniversityResource($this->university),
         ];
     }
 }
