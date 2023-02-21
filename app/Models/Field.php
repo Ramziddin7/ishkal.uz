@@ -13,9 +13,6 @@ class Field extends Model
         return $this->belongsTo(University::class);
     }
 
-    public function country(){
-        return $this->belongsTo(Country::class);
-    }
 
 
 }

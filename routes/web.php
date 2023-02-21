@@ -38,6 +38,8 @@ use Illuminate\Support\Facades\Auth;
         Route::put('university/update/{id}', [UniversityController::class,'update'])->name('university.web.update');
         Route::delete('university/delete/{id}', [UniversityController::class,'destroy'])->name('university.web.delete');
 
+        Route::delete('universities/{countryID}/field', [UniversityController::class,'field'])->name('university.web.field');
+
         // field
         Route::get('field', [FieldController::class,'index'])->name('field.web.index');
         Route::get('field/create', [FieldController::class,'create'])->name('field.web.create');

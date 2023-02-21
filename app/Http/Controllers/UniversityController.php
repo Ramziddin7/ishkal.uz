@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\FieldRelationResource;
 use App\Models\Country;
 use App\Models\University;
 use Illuminate\Http\Request;
@@ -188,15 +189,5 @@ class UniversityController extends Controller
     }
 
 
-    // public function dowload($id){
-    //     $uni = University::find($id);
-    //     if($uni){
-    //         $file = public_path().$uni->contractFile;
-    //         $headers = [
-    //             'Content-Type : application/pdf'
-    //         ];
-
-    //         return response()->download($$file, 'World uz contract with University', $headers);
-    //     }
-    // }
+    
 }
