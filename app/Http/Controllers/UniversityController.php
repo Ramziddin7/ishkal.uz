@@ -54,7 +54,7 @@ class UniversityController extends Controller
             'min_price'=>['required'],
             'min_ielts'=>['required'],
             'city_name'=>['required'],
-            'image'=>['required','mimes:jpeg,png,jpg'],
+            'image'=>['required','mimes:jpeg,png,jpg,webp'],
         ]);
 
 
@@ -124,6 +124,11 @@ class UniversityController extends Controller
      */
     public function update(Request $request,  $university)
     {
+
+        $request->validate([
+            'image'=>['nullable','mimes:jpeg,png,jpg,webp'],
+        ]);
+
         $university = University::find($university);
         if($university){
             if($request->file('image')){

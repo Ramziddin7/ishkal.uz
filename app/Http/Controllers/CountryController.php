@@ -43,7 +43,7 @@ class CountryController extends Controller
     {
         $request->validate([
             'name'=>['required'],
-            'image'=>['required','mimes:jpeg,png,jpg'],
+            'image'=>['required','mimes:jpeg,png,jpg,webp'],
         ]);
 
         if($request->file('image')){
@@ -98,6 +98,9 @@ class CountryController extends Controller
      */
     public function update(Request $request,$country)
     {
+        $request->validate([
+            'image'=>['nullable','mimes:jpeg,png,jpg,webp'],
+        ]);
         
         $country = Country::find($country);
         if($country){
