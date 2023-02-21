@@ -339,7 +339,7 @@ class UniversityController extends Controller
     {
         $university = University::find($university);
         if($university){
-            return UniversityRelationResource::collection($university);
+            return response()->json(new UniversityRelationResource($university),200);
         }
         return response()->json($this->dataError,404);
     }
