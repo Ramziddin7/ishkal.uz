@@ -25,8 +25,8 @@ class UniversityRelationResource extends JsonResource
             'image'=>asset($this->image),
             'created_at'=>$this->created_at->diffForHumans(),
             'updated_at'=>$this->updated_at->diffForHumans(),
-            'country'=>$this->country,
-            'fields'=>$this->field
+            'country'=>UniversityResource::collection($this->country),
+            'fields'=>FieldResource::collection($this->field)
         ];
     }
 }
