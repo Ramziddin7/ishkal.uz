@@ -10,11 +10,6 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
         /**
      * Display login page.
      * 
@@ -37,7 +32,7 @@ class LoginController extends Controller
         $credentials = $request->getCredentials();
 
         if(!Auth::validate($credentials)):
-            return redirect()->to('log');
+            return redirect()->route('login.show')->with('success', "Account successfully logout.");
         endif;
 
         $user = Auth::getProvider()->retrieveByCredentials($credentials);

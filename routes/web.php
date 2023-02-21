@@ -6,13 +6,13 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 
-    Route::get('/', [App\Http\Controllers\LoginController::class, 'show']);
+    Route::get('/',  [\App\Http\Controllers\LoginController::class ,'show'])->name('login.show');
 
 
     Route::group(['middleware' => ['guest']], function() {
        
         Route::get('worluzrustamovramziddin', [\App\Http\Controllers\RegisterController::class, 'show'])->name('show.register');
-        Route::post('reg',[\App\Http\Controllers\RegisterController::class, 'register'])->name('store.register');
+        Route::post('register',[\App\Http\Controllers\RegisterController::class, 'register'])->name('store.register');
 
         Route::get('log', [\App\Http\Controllers\LoginController::class ,'show'])->name('login.show');
         Route::post('log', [\App\Http\Controllers\LoginController::class,'login'])->name('login.perform');

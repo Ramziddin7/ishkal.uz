@@ -47,13 +47,13 @@
                   <label for="category">Categories multy</label>
                   <select name="categories[]" class="form-control" multiple aria-label="multiple select example">
                     <option selected>Select Categories</option>
-                    <option value="Camp(lager)">Camp (Lager)</option>
-                    <option value="Language cource">Language Cource</option>
-                    <option value="Exhibition ko'rgazma">Exhibition ko'rgazma</option>
+                    <option value="Lager">Lager</option>
+                    <option value="Til kursi">Til kursi</option>
+                    <option value="Ko'rgazma">Ko'rgazma</option>
                     <option value="ELPS olimpiyada ">ELPS olimpiyada </option>
                     <option value="Expo ta`lim ">Expo ta`lim </option>
-                    <option value="Master">Master</option>
-                    <option value="Bachelor">Bachelor</option>
+                    <option value="Magistratura">Magistratura</option>
+                    <option value="Bakalavr">Bakalavr</option>
                     <option value="PHD">PHD</option>
                   </select>
                 </div>
