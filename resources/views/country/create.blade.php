@@ -37,7 +37,7 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Country Price</label>
-                  <input type="text" name="Price" class="form-control" id="exampleInputEmail1" aria-describedby="Country" placeholder="Country Price">
+                  <input type="text" name="price" class="form-control" id="exampleInputEmail1" aria-describedby="Country" placeholder="Country Price">
                   <small id="Price" class="form-text text-muted">Please put country Price correctly</small>
                 </div>
                 <div class="form-group">
