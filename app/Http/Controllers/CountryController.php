@@ -43,6 +43,7 @@ class CountryController extends Controller
     {
         $request->validate([
             'name'=>['required'],
+            'price'=>['required'],
             'image'=>['required','mimes:jpeg,png,jpg,webp'],
         ]);
 
@@ -56,6 +57,7 @@ class CountryController extends Controller
 
         $country = new Country();
         $country->name = $request->name;
+        $country->price = $request->price;
         $country->image = $path ?? 'images\no-image-university.jpeg ';
         $country->save();
         return redirect()->route('country.web.index')->with('success', ' A new country added');
@@ -112,6 +114,7 @@ class CountryController extends Controller
                 $path = $getImage->move(('images'),$imageFullName);
             }
             $country->name = $request->name;
+            $country->price = $request->price;
             $country->image = $path ?? $country->image;
             $country->save();
             return redirect()->route('country.web.index')->with('success', ' Country updated');

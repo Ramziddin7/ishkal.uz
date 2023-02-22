@@ -15,7 +15,8 @@ class CountryFactory extends Factory
     {
         return [
             'name'=>$this->faker->name(),
-            'image'=>$this->faker->name()
+            'image'=>$this->faker->name(),
+            'price'=>$this->faker->numberBetween(1000,2000)
         ];
     }
 }

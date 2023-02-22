@@ -17,6 +17,7 @@ class CountryRelationResource extends JsonResource
         return [
             'id'=>$this->id,
             'mame'=>$this->name,
+            'price'=>$this->price,
             'image'=> asset($this->image),
             'created_at'=>$this->created_at->diffForHumans(),
             'updated_at'=>$this->updated_at->diffForHumans(),

@@ -89,9 +89,10 @@ class CountryController extends Controller
      *       mediaType="multipart/form-data",
      *       @OA\Schema(
      *       type="object",
-     *       required={"name","image"},
+     *       required={"name","image","price"},
      *       @OA\Property(property="name", type="text", format="text", example="AQSH"),
      *       @OA\Property(property="image", type="string", format="binary", example="image"),
+     *       @OA\Property(property="price", type="string", format="string", example="$2000"),
      *    ),
      *    ),
      * ),
@@ -133,6 +134,7 @@ class CountryController extends Controller
     {
         $request->validate([
             'name'=>['required'],
+            'price'=>['required'],
             'image'=>['required','mimes:jpeg,png,jpg'],
         ]);
 
@@ -146,6 +148,7 @@ class CountryController extends Controller
 
         $country = new Country();
         $country->name = $request->name;
+        $country->price = $request->price;
         $country->image = $path ?? 'images\no-image-university.jpeg ';
         $country->save();
         return response()->json(new CountryResource($country),200);
