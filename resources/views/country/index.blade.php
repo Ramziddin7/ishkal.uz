@@ -20,6 +20,7 @@
                   <tr>
                     <th scope="col">N</th>
                     <th scope="col">Name</th>
+                    <th scope="col">Price</th>
                     <th scope="col">Image</th>
                     <th scope="col">Etid</th>
                     <th scope="col">Delete</th>
@@ -31,6 +32,7 @@
                    <tr>
                       <th scope="row">{{$loop->index+1}}</th>
                       <td>{{$coun->name}}</td>
+                      <td>{{$coun->price}}</td>
                       <td>
                           <img width="20%" height="10%" class="img-responsave img-rounded" src="{{asset($coun->image)}}" alt="">
                       </td>
