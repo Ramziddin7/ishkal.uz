@@ -55,7 +55,7 @@
                   <small id="university" class="form-text text-muted">If you want not to select a value dont touch we are save old data</small>
                 </div>
                 <div class="form-group">
-                  <label for="contact file">Contact File</label>
+                  <label for="contact file">Contract File</label>
                   <input type="file" name="contractFile"  class="form-control" id="contact file" aria-describedby="" placeholder="Contact file">
                 </div>
                 <div class="form-group">
