@@ -28,7 +28,7 @@
       <form method="post" action="{{ route('login.perform') }}">
         
         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-        <img class="mb-4" src="{{asset('/images/world.uz.jpg')}}" alt="" width="120" height="130">
+        <img class="mb-4" src="{{asset('world.uz.jpg')}}" alt="" width="120" height="130">
         
         <h1 class="h3 mb-3 fw-normal">Login</h1>
         <div class="form-group form-floating mb-3">
