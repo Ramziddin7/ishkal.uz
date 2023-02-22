@@ -22,7 +22,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
                     <th scope="col">Image</th>
-                    <th scope="col">Etid</th>
+                    <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                   </tr>
                 </thead>

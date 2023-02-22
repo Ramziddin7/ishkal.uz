@@ -32,7 +32,7 @@
                     <th scope="col">N</th>
                     <th scope="col">Country</th>
                     <th scope="col">Categories</th>
-                    <th scope="col">ContactFile</th>
+                    <th scope="col">Contract File</th>
                     <th scope="col">Name</th>
                     <th scope="col">Min price</th>
                     <th scope="col">Min IELTS</th>
