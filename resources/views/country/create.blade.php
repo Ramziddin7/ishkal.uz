@@ -36,6 +36,11 @@
                   <small id="Country" class="form-text text-muted">Please put country name correctly</small>
                 </div>
                 <div class="form-group">
+                  <label for="exampleInputEmail1">Country Price</label>
+                  <input type="text" name="Price" class="form-control" id="exampleInputEmail1" aria-describedby="Country" placeholder="Country Price">
+                  <small id="Price" class="form-text text-muted">Please put country Price correctly</small>
+                </div>
+                <div class="form-group">
                   <label for="exampleInputPassword1">Image</label>
                   <input type="file" name="image" class="form-control" id="exampleInputPassword1" placeholder="file">
                 </div>
