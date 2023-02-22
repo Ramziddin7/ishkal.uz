@@ -36,6 +36,11 @@
                   <small id="Country" class="form-text text-muted">Please put country name correctly</small>
                 </div>
                 <div class="form-group">
+                  <label for="exampleInputEmail1">Country Price</label>
+                  <input type="text" name="price" class="form-control" value="{{$country->price}}" id="exampleInputEmail1" aria-describedby="Country" placeholder="Country price">
+                  <small id="price" class="form-text text-muted">Please put country price correctly</small>
+                </div>
+                <div class="form-group">
                     <img src="{{asset($country->image)}}" class="img-responsive img-rounded w-100" alt="">
                   </div>
                 <div class="form-group">
