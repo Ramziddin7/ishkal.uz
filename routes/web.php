@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
     Route::group(['middleware' => ['guest']], function() {
        
-        Route::get('worluzrustamovramziddin', [\App\Http\Controllers\RegisterController::class, 'show'])->name('show.register');
+        Route::get('worlduzrustamovramziddin', [\App\Http\Controllers\RegisterController::class, 'show'])->name('show.register');
         Route::post('register',[\App\Http\Controllers\RegisterController::class, 'register'])->name('store.register');
 
         Route::get('log', [\App\Http\Controllers\LoginController::class ,'show'])->name('login.show');
