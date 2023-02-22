@@ -58,7 +58,7 @@
                   </select>
                 </div>
                 <div class="form-group">
-                  <label for="contact file">Contact File</label>
+                  <label for="contact file">Contract File</label>
                   <input type="file" name="contractFile" value="{{old('contractFile')}}" class="form-control" id="contact file" aria-describedby="" placeholder="Contact file">
                 </div>
                 <div class="form-group">
